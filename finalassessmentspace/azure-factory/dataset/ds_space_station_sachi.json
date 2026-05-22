@@ -1,0 +1,18 @@
+{
+	"name": "ds_space_station_sachi",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_openspacestation",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "v1/satellites/25544"
+			}
+		},
+		"schema": {}
+	}
+}

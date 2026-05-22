@@ -1,0 +1,18 @@
+{
+	"name": "ds_storage_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_blob_storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "raw"
+			}
+		},
+		"schema": {}
+	}
+}
