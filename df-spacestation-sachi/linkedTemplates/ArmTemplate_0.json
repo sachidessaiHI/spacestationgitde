@@ -85,6 +85,10 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@concat('space_station', formatDateTime(utcNow(), 'yyyyMMdd_HHmmss'), '.json')",
+							"type": "Expression"
+						},
 						"container": "raw"
 					}
 				},
@@ -127,10 +131,7 @@
 								"type": "JsonSink",
 								"storeSettings": {
 									"type": "AzureBlobStorageWriteSettings",
-									"copyBehavior": {
-										"value": "@concat('f1_telemetry_driver55_', formatDateTime(utcNow(), 'yyyyMMdd_HHmmss'), '.json')",
-										"type": "Expression"
-									}
+									"copyBehavior": "FlattenHierarchy"
 								},
 								"formatSettings": {
 									"type": "JsonWriteSettings"
@@ -157,6 +158,7 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
+				"parameters": {},
 				"annotations": []
 			},
 			"dependsOn": [
