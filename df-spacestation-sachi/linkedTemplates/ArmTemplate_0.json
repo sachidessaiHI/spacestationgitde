@@ -14,6 +14,10 @@
 		"ls_openspacestation_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://api.wheretheiss.at/"
+		},
+		"tr_daily_space_data_properties_pl_ingest_space_station_parameters_RunIngestor": {
+			"type": "string",
+			"defaultValue": "spacedata"
 		}
 	},
 	"variables": {
@@ -158,7 +162,12 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
-				"parameters": {},
+				"parameters": {
+					"RunIngestor": {
+						"type": "string",
+						"defaultValue": "spacedata"
+					}
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -179,7 +188,9 @@
 							"referenceName": "pl_ingest_space_station",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"RunIngestor": "[parameters('tr_daily_space_data_properties_pl_ingest_space_station_parameters_RunIngestor')]"
+						}
 					}
 				],
 				"type": "ScheduleTrigger",

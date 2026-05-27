@@ -10,6 +10,9 @@
 		},
 		"ls_openspacestation_properties_typeProperties_url": {
 			"value": "https://api.wheretheiss.at/"
+		},
+		"tr_daily_space_data_properties_pl_ingest_space_station_parameters_RunIngestor": {
+			"value": "spacedata"
 		}
 	}
 }
