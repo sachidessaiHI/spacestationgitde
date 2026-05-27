@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  # ==========================================
+  # DIMENSION: dim_station
+  # ==========================================
+  - name: dim_station
+    description: "Dimension table containing static attributes for the space station."
+    columns:
+      - name: station_key
+        description: "Primary key (MD5 hash of iss_id)."
+        data_tests:
+          - unique
+          - not_null
+      - name: iss_id
+        data_tests:
+          - not_null
+
+  # ==========================================
+  # DIMENSION: dim_visibility
+  # ==========================================
+  - name: dim_visibility
+    description: "Dimension table containing categorical visibility statuses."
+    columns:
+      - name: visibility_key
+        description: "Primary key (MD5 hash of visibility status)."
+        data_tests:
+          - unique
+          - not_null
+      - name: visibility
+        data_tests:
+          - not_null
+
+  # ==========================================
+  # FACT: fct_spacestation_telemetry
+  # ==========================================
+  - name: fct_spacestation_telemetry
+    description: "Incremental fact table capturing point-in-time telemetry and positional data."
+    columns:
+      - name: measure_timestamp
+        description: "Unique identifier for each snapshot."
+        data_tests:
+          - unique
+          - not_null
+
+      # Foreign Key Referential Integrity Tests
+      - name: station_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_station')
+                field: station_key
+
+      - name: visibility_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_visibility')
+                field: visibility_key
+
+      # Core Metrics
+      - name: latitude
+        data_tests:
+          - not_null
+      - name: longitude
+        data_tests:
+          - not_null
+      - name: altitude_km
+        data_tests:
+          - not_null
+      - name: velocity_kmh
+        data_tests:
+          - not_null
