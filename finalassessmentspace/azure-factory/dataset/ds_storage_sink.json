@@ -10,6 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat('space_station', formatDateTime(utcNow(), 'yyyyMMdd_HHmmss'), '.json')",
+					"type": "Expression"
+				},
 				"container": "raw"
 			}
 		},
