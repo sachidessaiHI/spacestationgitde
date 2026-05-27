@@ -51,6 +51,12 @@
 				]
 			}
 		],
+		"parameters": {
+			"RunIngestor": {
+				"type": "string",
+				"defaultValue": "spacedata"
+			}
+		},
 		"annotations": []
 	}
 }

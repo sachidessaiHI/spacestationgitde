@@ -8,6 +8,9 @@
 				"pipelineReference": {
 					"referenceName": "pl_ingest_space_station",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"RunIngestor": "spacedata"
 				}
 			}
 		],
